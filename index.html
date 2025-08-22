@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Meu Universo Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans">
+
+  <!-- Fundo animado -->
+  <div class="animated-bg"></div>
+
+  <!-- Botão de Login -->
+  <div id="loginBtn">Login</div>
+
+  <!-- Hero Section -->
+  <main class="flex flex-col items-center justify-center h-[100vh] text-center px-4 relative">
+    <img src="logo.svg" alt="Logo" class="w-96 md:w-[32rem] logo-glow mb-12">
+
+    <div class="flex flex-col md:flex-row gap-12">
+      <div class="btn-wrapper">
+        <a href="/portfolio" class="btn-motion px-10 py-6 bg-[#1793D1] rounded-lg text-white text-xl font-semibold transform transition">Portfólio</a>
+        <span class="btn-desc" style="background-color: #1793D1; border-radius: 8px">Veja meus projetos de design e desenvolvimento.</span>
+      </div>
+      <div class="btn-wrapper">
+        <a href="/ecommerce" class="btn-motion px-10 py-6 bg-[#1793D1] rounded-lg text-white text-xl font-semibold transform transition">E-commerce</a>
+        <span class="btn-desc" style="background-color: #1793D1; border-radius: 8px">Loja online completa e funcional.</span>
+      </div>
+      <div class="btn-wrapper">
+        <a href="/forum" class="btn-motion px-10 py-6 bg-[#1793D1] rounded-lg text-white text-xl font-semibold transform transition">Fórum</a>
+        <span class="btn-desc" style="background-color: #1793D1;  border-radius: 8px;">Participe e interaja com a comunidade.</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Login/Register -->
+  <div id="loginModal">
+    <div class="login-box">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2 class="text-2xl font-bold mb-4 text-[#1793D1]" id="modalTitle">Login</h2>
+
+      <!-- Tabs -->
+      <div class="flex justify-center gap-4 mb-4">
+        <div id="loginTab" class="tab-btn active">Login</div>
+        <div id="registerTab" class="tab-btn inactive">Registrar</div>
+      </div>
+
+      <form id="authForm" class="flex flex-col gap-3">
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Senha">
+        <button type="submit" id="submitBtn">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full py-8 flex flex-col items-center gap-4 bg-[#1B1B1B] mt-8">
+    <p class="text-gray-400">Conecte-se comigo nas redes sociais:</p>
+    <div class="flex gap-6">
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+    <p class="text-gray-500 mt-4">&copy; 2025 Meu Universo Digital</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

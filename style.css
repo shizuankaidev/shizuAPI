@@ -1,0 +1,322 @@
+/* ===============================
+   Reset / Base
+=============================== */
+body {
+  background: #121212;
+  color: #F5F5F5;
+  overflow-x: hidden;
+  font-family: 'Fira Code', monospace;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   Fundo Animado / Glow / Partículas
+=============================== */
+.animated-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at center, #121212, #000000);
+  background-size: 200% 200%;
+  animation: bgMove 20s ease-in-out infinite;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.glow-layer {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%; left: -50%;
+  background: radial-gradient(circle, rgba(23,147,209,0.3) 0%, transparent 70%);
+  animation: pulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  width: 2px; height: 12px;
+  background: #1793D1;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+
+.line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(23,147,209,0.1);
+  animation: slide 4s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-20px) translateX(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh) translateX(50vw); opacity: 0; }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100%); opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { transform: translateX(100%); opacity: 0.2; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+  50% { transform: scale(1.1) rotate(10deg); opacity: 0.6; }
+  100% { transform: scale(1.2) rotate(-10deg); opacity: 0.4; }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* ===============================
+   Logo Cyberpunk Glow
+=============================== */
+.logo-glow {
+  position: relative;
+  filter: drop-shadow(0 0 25px #1793D1) drop-shadow(0 0 40px #1793D1);
+  transition: transform 0.3s, filter 0.3s;
+  z-index: 1;
+}
+
+.logo-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255,255,255,0.4), rgba(23,147,209,0.5), rgba(255,255,255,0.4));
+  background-size: 200% 200%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  border-radius: 0.5rem;
+  transition: opacity 0.3s;
+}
+
+.logo-glow:hover {
+  transform: scale(1.15) rotate(-2deg);
+  filter: drop-shadow(0 0 50px #1793D1) drop-shadow(0 0 70px #1793D1);
+}
+
+.logo-glow:hover::after {
+  opacity: 1;
+  animation: shine 1.2s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===============================
+   Botões Neon / Motion
+=============================== */
+.btn-wrapper { 
+  position: relative; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.btn-motion {
+  padding: 1.5rem 2.5rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(23,147,209,0.2);
+  box-shadow: 0 0 10px #1793D1, 0 0 25px rgba(23,147,209,0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-motion:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 0 20px #FF2D55, 0 0 40px rgba(23,147,209,0.7);
+}
+
+.btn-desc { 
+  position: absolute; 
+  bottom: -2.5rem; 
+  opacity: 0; 
+  color: #F5F5F5; 
+  text-align: center; 
+  font-size: 0.9rem; 
+  transition: opacity 0.3s, transform 0.3s; 
+  transform: translateY(10px); 
+  max-width: 180px; 
+  border-radius: 0.5rem; 
+  padding: 0.3rem;
+}
+
+.btn-wrapper:hover .btn-desc { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* ===============================
+   Footer Neon
+=============================== */
+footer {
+  background: #1B1B1B;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer a {
+  transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+footer a:hover {
+  transform: scale(1.2);
+  color: #1793D1;
+  text-shadow: 0 0 8px #1793D1, 0 0 15px #1793D1;
+}
+
+/* ===============================
+   Modal Login/Register
+=============================== */
+#loginModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 50;
+}
+
+#loginModal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.login-box {
+  background: #1B1B1B;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  transform: translateY(-20px);
+  transition: transform 0.3s;
+  position: relative;
+  box-shadow: 0 0 20px #1793D1, 0 0 40px rgba(23,147,209,0.5);
+}
+
+#loginModal.active .login-box {
+  transform: translateY(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #FF2D55;
+}
+
+.login-box input {
+  background: #121212;
+  border: 1px solid #333;
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  transition: border 0.3s;
+}
+
+.login-box input:focus {
+  border-color: #1793D1;
+  outline: none;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #1793D1;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 8px #1793D1, 0 0 25px rgba(23,147,209,0.7);
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+  background: #FF2D55;
+  box-shadow: 0 0 15px #FF2D55, 0 0 25px #FF2D55;
+}
+
+/* ===============================
+   Botão Login fixo
+=============================== */
+#loginBtn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #1793D1;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 60;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 8px #1793D1, 0 0 15px rgba(23,147,209,0.7);
+}
+
+#loginBtn:hover {
+  transform: scale(1.1);
+  background: #FF2D55;
+  box-shadow: 0 0 15px #FF2D55, 0 0 25px #FF2D55;
+}
+
+/* ===============================
+   Tabs Login/Register
+=============================== */
+.tab-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+.tab-btn.active {
+  background: #1793D1;
+  color: #fff;
+}
+
+.tab-btn.inactive {
+  background: #333;
+  color: #fff;
+}
+
+/* ===============================
+   Terminal Cursor Effect
+=============================== */
+body::after {
+  content: '_';
+  animation: blink 1s steps(2, start) infinite;
+  color: #1793D1;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
